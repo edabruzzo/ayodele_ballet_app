@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{responsavelBean.page}'/>
+		<f:event type="preRenderView" listener='#{responsavelBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Responsavel entities"/>
+
+	<ui:define name="header">
+		Responsavel
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Responsavel entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="responsavelBeanExampleNome" value="Nome:"/>
+						<h:panelGroup>
+							<h:inputText id="responsavelBeanExampleNome" value="#{responsavelBean.example.nome}"/>
+							<h:message for="responsavelBeanExampleNome" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="responsavelBeanExampleEndereco_logradouro" value="Endereco_logradouro:"/>
+						<h:panelGroup>
+							<h:inputText id="responsavelBeanExampleEndereco_logradouro" value="#{responsavelBean.example.endereco_logradouro}"/>
+							<h:message for="responsavelBeanExampleEndereco_logradouro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="responsavelBeanExampleEndereco_bairro" value="Endereco_bairro:"/>
+						<h:panelGroup>
+							<h:inputText id="responsavelBeanExampleEndereco_bairro" value="#{responsavelBean.example.endereco_bairro}"/>
+							<h:message for="responsavelBeanExampleEndereco_bairro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="responsavelBeanExampleEndereco_cidade" value="Endereco_cidade:"/>
+						<h:panelGroup>
+							<h:inputText id="responsavelBeanExampleEndereco_cidade" value="#{responsavelBean.example.endereco_cidade}"/>
+							<h:message for="responsavelBeanExampleEndereco_cidade" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="responsavelBeanExampleEndereco_estado" value="Endereco_estado:"/>
+						<h:panelGroup>
+							<h:inputText id="responsavelBeanExampleEndereco_estado" value="#{responsavelBean.example.endereco_estado}"/>
+							<h:message for="responsavelBeanExampleEndereco_estado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{responsavelBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{responsavelBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="responsavelBeanPageItems" styleClass="data-table" value="#{responsavelBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nome"/>
+					</f:facet>
+					<h:link outcome="/responsavel/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemNome" value="#{_item.nome}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Endereco_logradouro"/>
+					</f:facet>
+					<h:link outcome="/responsavel/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemEndereco_logradouro" value="#{_item.endereco_logradouro}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Endereco_numero"/>
+					</f:facet>
+					<h:link outcome="/responsavel/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemEndereco_numero" value="#{_item.endereco_numero}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Endereco_bairro"/>
+					</f:facet>
+					<h:link outcome="/responsavel/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemEndereco_bairro" value="#{_item.endereco_bairro}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Endereco_cidade"/>
+					</f:facet>
+					<h:link outcome="/responsavel/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemEndereco_cidade" value="#{_item.endereco_cidade}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{responsavelBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{responsavel_MensalidadeBean.page}'/>
+		<f:event type="preRenderView" listener='#{responsavel_MensalidadeBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Responsavel_ Mensalidade entities"/>
+
+	<ui:define name="header">
+		Responsavel_ Mensalidade
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Responsavel_ Mensalidade entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3"/>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{responsavel_MensalidadeBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{responsavel_MensalidadeBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="responsavel_MensalidadeBeanPageItems" styleClass="data-table" value="#{responsavel_MensalidadeBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id_responsavel"/>
+					</f:facet>
+					<h:link outcome="/responsavel_Mensalidade/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemId_responsavel" value="#{_item.id_responsavel}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id_mensalidade"/>
+					</f:facet>
+					<h:link outcome="/responsavel_Mensalidade/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemId_mensalidade" value="#{_item.id_mensalidade}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Data_pagamento"/>
+					</f:facet>
+					<h:link outcome="/responsavel_Mensalidade/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemData_pagamento" value="#{_item.data_pagamento}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Pagamento_realizado"/>
+					</f:facet>
+					<h:link outcome="/responsavel_Mensalidade/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText styleClass="#{_item.pagamento_realizado ? 'boolean-true' : 'boolean-false'}" value=""/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{responsavel_MensalidadeBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

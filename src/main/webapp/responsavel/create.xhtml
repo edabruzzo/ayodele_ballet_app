@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{responsavelBean.id}'/>
+		<f:event type="preRenderView" listener='#{responsavelBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Responsavel"/>
+
+	<ui:define name="header">
+		Responsavel
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty responsavelBean.id}'>
+				Edit existing Responsavel
+			</c:when>
+			<c:otherwise>
+				Create a new Responsavel
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="responsavelBeanResponsavelNome" value="Nome:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelNome" value="#{responsavelBean.responsavel.nome}"/>
+					<h:message for="responsavelBeanResponsavelNome" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelEndereco_logradouro" value="Endereco_logradouro:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelEndereco_logradouro" value="#{responsavelBean.responsavel.endereco_logradouro}"/>
+					<h:message for="responsavelBeanResponsavelEndereco_logradouro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelEndereco_numero" value="Endereco_numero:"/>
+				<h:panelGrid columnClasses="label,component,required" columns="3" id="responsavelBeanResponsavelEndereco_numero"/>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelEndereco_bairro" value="Endereco_bairro:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelEndereco_bairro" value="#{responsavelBean.responsavel.endereco_bairro}"/>
+					<h:message for="responsavelBeanResponsavelEndereco_bairro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelEndereco_cidade" value="Endereco_cidade:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelEndereco_cidade" value="#{responsavelBean.responsavel.endereco_cidade}"/>
+					<h:message for="responsavelBeanResponsavelEndereco_cidade" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelEndereco_estado" value="Endereco_estado:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelEndereco_estado" value="#{responsavelBean.responsavel.endereco_estado}"/>
+					<h:message for="responsavelBeanResponsavelEndereco_estado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelEndereco_cep" value="Endereco_cep:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelEndereco_cep" value="#{responsavelBean.responsavel.endereco_cep}"/>
+					<h:message for="responsavelBeanResponsavelEndereco_cep" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelTelefone_principal" value="Telefone_principal:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelTelefone_principal" value="#{responsavelBean.responsavel.telefone_principal}"/>
+					<h:message for="responsavelBeanResponsavelTelefone_principal" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelTelefone_recados" value="Telefone_recados:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelTelefone_recados" value="#{responsavelBean.responsavel.telefone_recados}"/>
+					<h:message for="responsavelBeanResponsavelTelefone_recados" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelTelefone_dois" value="Telefone_dois:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelTelefone_dois" value="#{responsavelBean.responsavel.telefone_dois}"/>
+					<h:message for="responsavelBeanResponsavelTelefone_dois" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelTalento_1" value="Talento_1:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelTalento_1" value="#{responsavelBean.responsavel.talento_1}"/>
+					<h:message for="responsavelBeanResponsavelTalento_1" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelTalento_2" value="Talento_2:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelTalento_2" value="#{responsavelBean.responsavel.talento_2}"/>
+					<h:message for="responsavelBeanResponsavelTalento_2" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelTalento_3" value="Talento_3:"/>
+				<h:panelGroup>
+					<h:inputText id="responsavelBeanResponsavelTalento_3" value="#{responsavelBean.responsavel.talento_3}"/>
+					<h:message for="responsavelBeanResponsavelTalento_3" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="responsavelBeanResponsavelPossui_pendencia" value="Possui_pendencia:"/>
+				<h:panelGroup>
+					<h:selectBooleanCheckbox id="responsavelBeanResponsavelPossui_pendencia" value="#{responsavelBean.responsavel.possui_pendencia}"/>
+					<h:message for="responsavelBeanResponsavelPossui_pendencia" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{responsavelBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty responsavelBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{responsavelBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{responsavelBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
